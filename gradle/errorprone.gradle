@@ -1,0 +1,7 @@
+// disable warnings in generated code by immutables
+// https://github.com/google/error-prone/issues/329
+tasks.withType(JavaCompile) {
+	options.compilerArgs += [
+		'-XepDisableWarningsInGeneratedCode'
+	]
+}

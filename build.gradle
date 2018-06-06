@@ -1,0 +1,41 @@
+plugins {
+	id 'java'
+	id 'jacoco'
+	id 'eclipse'
+	id 'net.ltgt.apt-eclipse' version '0.15'
+	id 'com.diffplug.gradle.spotless' version '3.13.0'
+	id 'org.springframework.boot' version '2.0.2.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.5.RELEASE'
+	id 'net.ltgt.errorprone' version '0.0.14'
+	id 'se.patrikerdes.use-latest-versions' version '0.2.3'
+	id 'com.github.ben-manes.versions' version '0.17.0'
+}
+
+apply from: "$rootDir/gradle/jacoco.gradle"
+apply from: "$rootDir/gradle/spotless.gradle"
+apply from: "$rootDir/gradle/errorprone.gradle"
+
+version = '0.1.0-SNAPSHOT'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories { mavenCentral() }
+
+ext {
+	junitVersion = '5.2.0'
+	guavaVersion = '25.1-jre'
+	immutablesVersion = '2.6.1'
+}
+
+dependencies {
+	compile 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'com.google.code.findbugs:jsr305:3.0.2'
+	compileOnly "org.immutables:value:${immutablesVersion}:annotations"
+	annotationProcessor "org.immutables:value:${immutablesVersion}"
+	testCompile "com.google.guava:guava:${guavaVersion}"
+	testCompile 'org.springframework.boot:spring-boot-starter-test'
+	testCompile "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
+	testRuntime "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+}
+
+test { useJUnitPlatform() }

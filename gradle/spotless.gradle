@@ -1,0 +1,11 @@
+spotless {
+	java {
+		removeUnusedImports()
+		googleJavaFormat()
+	}
+	groovyGradle {
+		target '**/*.gradle'
+		greclipse()
+	}
+	freshmark { target 'README.md'}
+}
