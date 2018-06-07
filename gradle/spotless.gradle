@@ -1,11 +1,12 @@
 spotless {
-	java {
-		removeUnusedImports()
-		googleJavaFormat()
-	}
-	groovyGradle {
-		target '**/*.gradle'
-		greclipse()
-	}
-	freshmark { target 'README.md'}
+    java {
+        removeUnusedImports()
+        googleJavaFormat()
+    }
+    groovyGradle {
+        target '**/*.gradle'
+        greclipse()
+        indentWithSpaces()
+    }
+    freshmark { target 'README.md'}
 }
