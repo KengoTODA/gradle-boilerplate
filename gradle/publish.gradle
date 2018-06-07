@@ -1,0 +1,14 @@
+apply plugin: 'maven-publish'
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId 'jp.skypencil'
+            from components.java
+        }
+    }
+}
+
+// TODO: sign for stable release
+// apply plugin: 'signing'
+// signing { sign publishing.publications }
