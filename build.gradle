@@ -25,7 +25,7 @@ repositories { mavenCentral() }
 ext {
     junitVersion = '5.2.0'
     guavaVersion = '25.1-jre'
-    immutablesVersion = '2.6.1'
+    immutablesVersion = '2.6.3'
 }
 
 dependencies {
