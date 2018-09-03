@@ -23,7 +23,7 @@ targetCompatibility = 1.8
 repositories { mavenCentral() }
 
 ext {
-    junitVersion = '5.2.0'
+    junitVersion = '5.3.0'
     guavaVersion = '26.0-jre'
     immutablesVersion = '2.7.1'
 }
