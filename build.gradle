@@ -26,6 +26,7 @@ ext {
     junitVersion = '5.3.2'
     guavaVersion = '27.0.1-jre'
     immutablesVersion = '2.7.4'
+    errorproneVersion = '2.3.2'
 }
 
 dependencies {
@@ -37,6 +38,7 @@ dependencies {
     testCompile 'org.springframework.boot:spring-boot-starter-test'
     testCompile "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
     testRuntime "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+    errorprone "com.google.errorprone:error_prone_core:${errorproneVersion}"
 }
 
 test { useJUnitPlatform() }
