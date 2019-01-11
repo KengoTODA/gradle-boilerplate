@@ -30,14 +30,14 @@ ext {
 }
 
 dependencies {
-    compile 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
     compileOnly 'com.google.code.findbugs:jsr305:3.0.2'
     compileOnly "org.immutables:value:${immutablesVersion}:annotations"
     annotationProcessor "org.immutables:value:${immutablesVersion}"
-    testCompile "com.google.guava:guava:${guavaVersion}"
-    testCompile 'org.springframework.boot:spring-boot-starter-test'
-    testCompile "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
-    testRuntime "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+    testImplementation "com.google.guava:guava:${guavaVersion}"
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
     errorprone "com.google.errorprone:error_prone_core:${errorproneVersion}"
 }
 
