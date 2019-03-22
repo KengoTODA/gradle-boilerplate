@@ -3,3 +3,6 @@ jdk:
   - openjdk11
 script:
   - ./gradlew
+after_success:
+  - yarn install
+  - yarn semantic-release
