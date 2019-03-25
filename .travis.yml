@@ -1,9 +1,13 @@
 language: java
 jdk:
   - openjdk11
+before_install:
+  - nvm install
+  # Install the latest YARN into PATH
+  - curl -o- -L https://yarnpkg.com/install.sh | bash -s
+  - export PATH="$HOME/.yarn/bin:$PATH"
 script:
   - ./gradlew
 after_success:
-  - nvm install
   - yarn install
   - yarn semantic-release
