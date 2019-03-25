@@ -7,6 +7,7 @@ spotless {
         target '**/*.gradle'
         greclipse()
         indentWithSpaces()
+        paddedCell()
     }
     // Freshmark has no dependency on java.scripting module
     // https://github.com/diffplug/spotless/issues/206
