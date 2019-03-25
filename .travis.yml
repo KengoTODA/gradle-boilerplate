@@ -4,5 +4,6 @@ jdk:
 script:
   - ./gradlew
 after_success:
+  - nvm install
   - yarn install
   - yarn semantic-release
