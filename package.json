@@ -2,13 +2,13 @@
   "devDependencies": {
     "@semantic-release/changelog": "3.0.4",
     "@semantic-release/commit-analyzer": "6.2.0",
-    "@semantic-release/git": "7.0.12",
+    "@semantic-release/git": "7.0.13",
     "@semantic-release/github": "5.4.0",
     "@semantic-release/release-notes-generator": "7.2.0",
     "commitizen": "3.1.1",
     "cz-conventional-changelog": "2.1.0",
     "gradle-semantic-release-plugin": "1.1.0",
-    "semantic-release": "15.13.16"
+    "semantic-release": "15.13.17"
   },
   "scripts": {
     "semantic-release": "semantic-release",
