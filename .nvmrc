@@ -1,3 +1,4 @@
-8
-# semantic-release needs Node version 8
-# https://semantic-release.gitbook.io/semantic-release/support/node-version
+10
+
+# semantic-release 4.0 recommends to use 10 or above
+# https://github.com/commitizen/cz-cli/pull/649
