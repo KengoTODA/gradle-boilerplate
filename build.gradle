@@ -7,7 +7,7 @@ plugins {
     id 'net.ltgt.apt-eclipse' version '0.21'
     id 'com.diffplug.gradle.spotless' version '3.23.1'
     id 'org.springframework.boot' version '2.1.6.RELEASE'
-    id 'io.spring.dependency-management' version '1.0.7.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
     id 'net.ltgt.errorprone' version '0.8.1'
     id 'se.patrikerdes.use-latest-versions' version '0.2.12'
     id 'com.github.ben-manes.versions' version '0.21.0'
