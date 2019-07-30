@@ -2,6 +2,9 @@
   "extends": [
     "config:base"
   ],
+  "node": {
+    "enabled": true
+  },
   "gradle": {
     "enabled": true
   }
