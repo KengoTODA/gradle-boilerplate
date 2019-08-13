@@ -9,7 +9,7 @@ spotless {
         indentWithSpaces()
         paddedCell()
     }
-    // Freshmark has no dependency on java.scripting module
-    // https://github.com/diffplug/spotless/issues/206
-    // freshmark { target 'README.md'}
+    freshmark {
+        target 'README.md'
+    }
 }
