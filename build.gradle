@@ -9,7 +9,7 @@ plugins {
     id 'jacoco'
     id 'eclipse'
     id 'net.ltgt.apt-eclipse' version '0.21'
-    id 'com.diffplug.gradle.spotless' version '3.24.1'
+    id 'com.diffplug.gradle.spotless' version '3.24.2'
     id 'org.springframework.boot' version '2.1.7.RELEASE'
     id 'io.spring.dependency-management' version '1.0.8.RELEASE'
     id 'net.ltgt.errorprone' version '0.8.1'
