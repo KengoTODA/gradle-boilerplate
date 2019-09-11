@@ -7,7 +7,6 @@ buildscript {
 plugins {
     id 'java'
     id 'jacoco'
-    id 'eclipse'
     id 'net.ltgt.apt-eclipse' version '0.21'
     id 'com.diffplug.gradle.spotless' version '3.24.2'
     id 'org.springframework.boot' version '2.1.8.RELEASE'
@@ -22,8 +21,7 @@ apply from: "$rootDir/gradle/spotless.gradle"
 apply from: "$rootDir/gradle/errorprone.gradle"
 apply from: "$rootDir/gradle/publish.gradle"
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = 11
 
 repositories { mavenCentral() }
 
