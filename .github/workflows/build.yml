@@ -23,6 +23,7 @@ jobs:
         path: build/reports
     - name: Release
       run: |
+        echo -n $GITHUB_ACTION | wc -c
         yarn install
         yarn semantic-release
       env:
