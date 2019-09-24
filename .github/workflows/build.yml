@@ -23,9 +23,8 @@ jobs:
         path: build/reports
     - name: Release
       run: |
-        echo -n $GITHUB_ACTION | wc -c
+        echo GITHUB_ACTION is: $GITHUB_ACTION
         yarn install
         yarn semantic-release
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        GITHUB_ACTION: 'Release'
