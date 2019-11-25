@@ -9,7 +9,4 @@ spotless {
         indentWithSpaces()
         paddedCell()
     }
-    freshmark {
-        target 'README.md'
-    }
 }
