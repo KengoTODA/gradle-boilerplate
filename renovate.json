@@ -1,14 +1,10 @@
 {
-  "extends": [
-    "config:base"
-  ],
+  "extends": ["config:base"],
   "node": {
     "enabled": true
   },
   "gradle": {
     "enabled": true
   },
-  "labels": [
-    "dependencies"
-  ]
+  "labels": ["dependencies"]
 }
