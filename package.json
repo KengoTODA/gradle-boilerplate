@@ -5,12 +5,12 @@
     "@semantic-release/git": "7.0.18",
     "@semantic-release/github": "5.5.5",
     "@semantic-release/release-notes-generator": "7.3.4",
-    "commitlint": "^8.2.0",
-    "conventional-changelog-conventionalcommits": "^4.2.3",
+    "commitlint": "8.2.0",
+    "conventional-changelog-conventionalcommits": "4.2.3",
     "gradle-semantic-release-plugin": "1.2.1",
-    "husky": "^3.1.0",
-    "lint-staged": "^9.4.3",
-    "prettier": "^1.19.1",
+    "husky": "3.1.0",
+    "lint-staged": "9.4.3",
+    "prettier": "1.19.1",
     "semantic-release": "15.13.31"
   },
   "scripts": {
