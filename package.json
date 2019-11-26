@@ -5,10 +5,8 @@
     "@semantic-release/git": "7.0.18",
     "@semantic-release/github": "5.5.5",
     "@semantic-release/release-notes-generator": "7.3.4",
-    "commitizen": "4.0.3",
     "commitlint": "^8.2.0",
     "conventional-changelog-conventionalcommits": "^4.2.3",
-    "cz-conventional-changelog": "3.0.2",
     "gradle-semantic-release-plugin": "1.2.1",
     "husky": "^3.1.0",
     "lint-staged": "^9.4.3",
@@ -21,7 +19,6 @@
   "husky": {
     "hooks": {
       "pre-commit": "./gradlew spotlessApply && lint-staged",
-      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
@@ -58,10 +55,5 @@
   },
   "engines": {
     "node": "^10.10.0"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
   }
 }
