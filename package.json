@@ -3,7 +3,7 @@
     "@semantic-release/changelog": "3.0.6",
     "@semantic-release/commit-analyzer": "7.0.0",
     "@semantic-release/git": "8.0.0",
-    "@semantic-release/github": "6.0.0",
+    "@semantic-release/github": "6.0.1",
     "@semantic-release/release-notes-generator": "7.3.5",
     "commitlint": "8.3.4",
     "conventional-changelog-conventionalcommits": "4.2.3",
@@ -11,7 +11,7 @@
     "husky": "4.0.6",
     "lint-staged": "9.5.0",
     "prettier": "1.19.1",
-    "semantic-release": "16.0.0"
+    "semantic-release": "16.0.1"
   },
   "scripts": {
     "semantic-release": "semantic-release"
