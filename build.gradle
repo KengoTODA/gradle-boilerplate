@@ -26,7 +26,7 @@ sourceCompatibility = 11
 repositories { mavenCentral() }
 
 ext {
-    junitVersion = '5.5.2'
+    junitVersion = '5.6.0'
     guavaVersion = '28.2-jre'
     immutablesVersion = '2.8.3'
     errorproneVersion = '2.3.4'
