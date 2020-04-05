@@ -10,7 +10,7 @@
     "gradle-semantic-release-plugin": "1.4.1",
     "husky": "4.2.3",
     "lint-staged": "10.1.2",
-    "prettier": "2.0.2",
+    "prettier": "2.0.3",
     "semantic-release": "17.0.4"
   },
   "scripts": {
