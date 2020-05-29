@@ -29,7 +29,7 @@ ext {
     junitVersion = '5.6.2'
     guavaVersion = '29.0-jre'
     immutablesVersion = '2.8.8'
-    errorproneVersion = '2.3.4'
+    errorproneVersion = '2.4.0'
 }
 
 dependencies {
