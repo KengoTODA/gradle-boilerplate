@@ -28,7 +28,7 @@ repositories { mavenCentral() }
 ext {
     junitVersion = '5.7.0'
     guavaVersion = '29.0-jre'
-    immutablesVersion = '2.8.9-ea-0'
+    immutablesVersion = '2.8.9-ea-1'
     errorproneVersion = '2.4.0'
 }
 
