@@ -18,10 +18,19 @@
     const subject = form.querySelector('input[name=subject]');
     const tasks = document.getElementById('task');
 
-    function append(task) {
+    function append(task, list) {
         const item = document.createElement('li');
         item.textContent = `${task.subject} (${task.id})`;
-        tasks.appendChild(item);
+        list.appendChild(item);
+    }
+    function init() {
+        fetch('/task').then(res => res.json()).then((list) => {
+            const fragment = document.createDocumentFragment();
+            list.forEach((task) => {
+                append(task, fragment);
+            });
+            tasks.appendChild(fragment);
+        });
     }
 
     form.addEventListener('submit', (event) => {
@@ -31,9 +40,11 @@
                 'Content-Type': 'application/json'
             },
             body: subject.value
-        }).then(res => res.json()).then(json => append(json));
+        }).then(res => res.json()).then(json => append(json, tasks));
+        subject.value = '';
         event.preventDefault();
     });
+    init();
 </script>
 </body>
 </html>

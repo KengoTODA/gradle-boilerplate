@@ -33,7 +33,7 @@ public class TaskController {
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "No task found with id: " + id));
   }
 
-  @GetMapping("/task/")
+  @GetMapping("/task")
   public Stream<TaskModel> list() {
     return service.list();
   }
