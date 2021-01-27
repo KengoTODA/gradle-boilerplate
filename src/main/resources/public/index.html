@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task management app</title>
+</head>
+<body>
+<form id="form" action="/task" method="post">
+    <label>subject:<input name="subject" autofocus></label>
+    <button type="submit">Submit</button>
+</form>
+<ul id="task"></ul>
+<script>
+    const form = document.getElementById('form');
+    const subject = form.querySelector('input[name=subject]');
+    const tasks = document.getElementById('task');
+
+    function append(task) {
+        const item = document.createElement('li');
+        item.textContent = `${task.subject} (${task.id})`;
+        tasks.appendChild(item);
+    }
+
+    form.addEventListener('submit', (event) => {
+        fetch('/task', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: subject.value
+        }).then(res => res.json()).then(json => append(json));
+        event.preventDefault();
+    });
+</script>
+</body>
+</html>
