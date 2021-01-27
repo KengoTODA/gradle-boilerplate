@@ -1,0 +1,20 @@
+name: Documentation
+on:
+  pull_request:
+    paths:
+      - "docs/**"
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - closed
+jobs:
+  staging:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Deploy to the staging site
+        uses: KengoTODA/readthedocs-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          rtd-token: ${{ secrets.RTD_TOKEN }}
+          rtd-project: gradle-boilerplate

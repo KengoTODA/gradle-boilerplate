@@ -3,9 +3,19 @@
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
-The boilerplate project that uses Gradle to build, `spring-boot-starter-web` to develop server, and others to ease development.
+The boilerplate project with Gradle, `spring-boot-starter-web`, and `semantic-release`.
 
-To format codes, run `./gradlew spotlessApply` that is supported by [spotless plugin](https://github.com/diffplug/spotless).
+## Suggested GitHub Apps
+
+It's suggested to enable following GitHub Apps in your project:
+
+- [Semantic Pull Requests](https://github.com/apps/semantic-pull-requests)
+
+## Suggested Services
+
+It's suggested to introduce following services in your project:
+
+- [ReadTheDocs](https://readthedocs.org/)
 
 ## Copyright
 
