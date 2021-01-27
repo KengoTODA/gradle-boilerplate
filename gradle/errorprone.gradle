@@ -1,3 +1,5 @@
+apply plugin: 'net.ltgt.errorprone'
+
 // disable warnings in generated code by immutables
 // https://github.com/google/error-prone/issues/329
 tasks.withType(JavaCompile).configureEach {

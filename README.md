@@ -7,8 +7,6 @@ The boilerplate project that uses Gradle to build, `spring-boot-starter-web` to 
 
 To format codes, run `./gradlew spotlessApply` that is supported by [spotless plugin](https://github.com/diffplug/spotless).
 
-To upgrade dependencies and plugins, run `./gradlew useLatestVersions` that is supported by [use-latest-versions plugin](https://github.com/patrikerdes/gradle-use-latest-versions-plugin).
-
 ## Copyright
 
 Copyright [yyyy][name of copyright owner]
