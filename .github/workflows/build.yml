@@ -23,7 +23,7 @@ jobs:
         path: build/reports
     - name: Release
       run: |
-        yarn install
-        yarn semantic-release
+        npm ci
+        npm run semantic-release
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
