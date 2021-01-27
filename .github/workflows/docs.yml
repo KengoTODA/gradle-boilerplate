@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Deploy to the staging site
-        uses: KengoTODA/readthedocs-action@master
+        uses: KengoTODA/readthedocs-action@main
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           rtd-token: ${{ secrets.RTD_TOKEN }}
