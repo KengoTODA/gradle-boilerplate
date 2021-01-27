@@ -11,6 +11,7 @@
     "semantic-release": "17.3.7"
   },
   "scripts": {
+    "format": "prettier --write **/*.{md,json}",
     "semantic-release": "semantic-release"
   },
   "husky": {
