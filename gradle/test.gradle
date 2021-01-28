@@ -8,4 +8,6 @@ dependencies {
 
 test { useJUnitPlatform() }
 
-tasks.check.dependsOn 'jacocoTestReport'
+tasks.named('jacocoTestReport').configure {
+    dependsOn tasks.named('check')
+}

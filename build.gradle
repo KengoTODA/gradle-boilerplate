@@ -1,5 +1,6 @@
 plugins {
     id 'jacoco'
+    id 'org.sonarqube' version '3.1.1'
     id 'com.diffplug.spotless' version '5.9.0' apply false
     id 'org.springframework.boot' version '2.4.2' apply false
     id 'io.spring.dependency-management' version '1.0.11.RELEASE' apply false
@@ -16,7 +17,6 @@ ext {
 allprojects {
     repositories { mavenCentral() }
 }
-
 subprojects {
     apply from: "$rootDir/gradle/java.gradle"
     apply from: "$rootDir/gradle/test.gradle"
@@ -27,7 +27,7 @@ subprojects {
     }
 }
 
-task jacocoRootReport(type: JacocoReport) {
+tasks.register('jacocoRootReport', JacocoReport).configure {
     description = 'Merge all coverage reports before submit to SonarQube'
     List<JacocoReport> reportTasks = project.subprojects.collect {it.tasks.withType(JacocoReport)}.flatten()
     dependsOn reportTasks
@@ -41,6 +41,19 @@ task jacocoRootReport(type: JacocoReport) {
         xml.enabled = true
         xml.destination file("${buildDir}/reports/jacoco/merged/merged.xml")
     }
+}
+
+sonarqube {
+    properties {
+        property 'sonar.coverage.jacoco.xmlReportPaths', jacocoRootReport.reports.xml.destination
+        property 'sonar.host.url', 'https://sonarcloud.io'
+        property 'sonar.organization', 'kengotoda-github'
+        property 'sonar.projectKey', 'KengoTODA_gradle-boilerplate'
+    }
+}
+
+tasks.named('sonarqube').configure {
+    dependsOn jacocoRootReport
 }
 
 defaultTasks 'spotlessApply', 'build'
