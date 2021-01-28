@@ -13,23 +13,47 @@ ext {
     errorproneVersion = '2.5.1'
 }
 
+apply plugin: 'java-library'
+apply from: "$rootDir/gradle/java.gradle"
 apply from: "$rootDir/gradle/test.gradle"
 apply from: "$rootDir/gradle/spotless.gradle"
-apply from: "$rootDir/gradle/errorprone.gradle"
 apply from: "$rootDir/gradle/publish.gradle"
 
-tasks.withType(JavaCompile) {
-    options.release = 11
+allprojects {
+    repositories { mavenCentral() }
 }
-
-repositories { mavenCentral() }
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation project(':domain')
     compileOnly 'com.google.code.findbugs:jsr305:3.0.2'
     compileOnly "org.immutables:value:${immutablesVersion}:annotations"
     annotationProcessor "org.immutables:value:${immutablesVersion}"
-    errorprone "com.google.errorprone:error_prone_core:${errorproneVersion}"
+    testImplementation "com.google.guava:guava:${guavaVersion}"
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+subprojects {
+    apply from: "$rootDir/gradle/java.gradle"
+    apply from: "$rootDir/gradle/test.gradle"
+    apply from: "$rootDir/gradle/spotless.gradle"
+
+    ext {
+        mavenBom = org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES
+    }
+}
+
+task jacocoRootReport(type: JacocoReport) {
+    description = 'Merge all coverage reports before submit to SonarQube'
+    def reportTasks = project.getTasksByName("jacocoTestReport", true)
+    dependsOn reportTasks
+
+    executionData.setFrom reportTasks.executionData
+    sourceDirectories.setFrom reportTasks.sourceDirectories
+
+    reports {
+        html.enabled = true
+    }
 }
 
 defaultTasks 'spotlessApply', 'build'

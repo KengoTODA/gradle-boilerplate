@@ -1,8 +1,8 @@
-package jp.skypencil;
+package jp.skypencil.domain.service;
 
-import java.util.Optional;
-import java.util.UUID;
-import java.util.stream.Stream;
+import jp.skypencil.domain.model.Task;
+import jp.skypencil.domain.model.TaskId;
+import jp.skypencil.domain.model.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * unable to call other methods provided for domain objects.
  */
 @Service
-class TaskDomainService {
+public class TaskDomainService {
   private final TaskRepository repository;
 
   @Autowired
@@ -20,17 +20,9 @@ class TaskDomainService {
     this.repository = repository;
   }
 
-  Optional<TaskModel> find(UUID id) {
-    return repository.find(new TaskId(id)).map(TaskModel::new);
-  }
-
-  Stream<TaskModel> list() {
-    return repository.list().map(TaskModel::new);
-  }
-
-  TaskModel create(String subject) {
+  public Task create(String subject) {
     Task task = new Task(TaskId.create(), subject, false);
     repository.save(task);
-    return new TaskModel(task);
+    return task;
   }
 }

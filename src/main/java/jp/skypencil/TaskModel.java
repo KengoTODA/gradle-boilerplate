@@ -1,6 +1,7 @@
 package jp.skypencil;
 
 import java.util.UUID;
+import jp.skypencil.domain.model.Task;
 import org.springframework.lang.NonNull;
 
 /**
