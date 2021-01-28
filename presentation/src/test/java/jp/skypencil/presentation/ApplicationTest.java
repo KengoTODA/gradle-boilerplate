@@ -10,9 +10,9 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-public class ApplicationTest {
+class ApplicationTest {
   @Test
-  public void test(ApplicationContext context) {
+  void test(ApplicationContext context) {
     assertNotNull(context);
   }
 }

@@ -3,7 +3,6 @@ package jp.skypencil.presentation;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.BDDMockito.given;
 
 import java.util.Optional;
@@ -48,7 +47,7 @@ class TaskControllerTest {
     TaskController controller = new TaskController(service);
 
     UUID id = UUID.randomUUID();
-    given(service.find(eq(id))).willReturn(Optional.empty());
+    given(service.find(id)).willReturn(Optional.empty());
     String message = String.format("No task found with id: %s", id);
     assertThrows(ResponseStatusException.class, () -> controller.find(id), message);
   }
