@@ -1,4 +1,4 @@
-package jp.skypencil;
+package jp.skypencil.infrastructure.onmemory.task;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
