@@ -1,7 +1,14 @@
+// before import this file, make sure java-library or org.springframework.boot plugin has been imported.
+
 apply plugin: 'net.ltgt.errorprone'
+
+dependencies {
+    errorprone "com.google.errorprone:error_prone_core:${errorproneVersion}"
+}
 
 // disable warnings in generated code by immutables
 // https://github.com/google/error-prone/issues/329
 tasks.withType(JavaCompile).configureEach {
+    options.release = 11
     options.errorprone.disableWarningsInGeneratedCode = true
 }

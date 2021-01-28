@@ -1,20 +1,21 @@
-package jp.skypencil;
+package jp.skypencil.domain.model;
 
 import java.util.Objects;
 import java.util.UUID;
 
-class TaskId implements Comparable<TaskId> {
+public final class TaskId implements Comparable<TaskId> {
   private final UUID uuid;
 
-  TaskId(UUID uuid) {
+  // TODO narrow down the scope
+  public TaskId(UUID uuid) {
     this.uuid = Objects.requireNonNull(uuid);
   }
 
-  UUID getUuid() {
+  public UUID getUuid() {
     return uuid;
   }
 
-  static TaskId create() {
+  public static TaskId create() {
     return new TaskId(UUID.randomUUID());
   }
 

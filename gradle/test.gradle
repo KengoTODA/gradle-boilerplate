@@ -1,8 +1,7 @@
 apply plugin: 'jacoco'
+apply plugin: 'java'
 
 dependencies {
-    testImplementation "com.google.guava:guava:${guavaVersion}"
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
 }
