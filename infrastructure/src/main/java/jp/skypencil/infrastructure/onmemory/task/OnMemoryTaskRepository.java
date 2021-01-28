@@ -11,7 +11,7 @@ import jp.skypencil.domain.model.TaskRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-class OnMemoryTaskRepository implements TaskRepository {
+public class OnMemoryTaskRepository implements TaskRepository {
   private final Map<TaskId, Task> store = Collections.synchronizedMap(new LinkedHashMap<>());
 
   @Override
