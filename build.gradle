@@ -1,8 +1,7 @@
 plugins {
-    id 'java'
     id 'com.diffplug.spotless' version '5.9.0' apply false
-    id 'org.springframework.boot' version '2.4.2'
-    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'org.springframework.boot' version '2.4.2' apply false
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE' apply false
     id 'net.ltgt.errorprone' version '1.3.0' apply false
 }
 
@@ -13,25 +12,8 @@ ext {
     errorproneVersion = '2.5.1'
 }
 
-apply plugin: 'java-library'
-apply from: "$rootDir/gradle/java.gradle"
-apply from: "$rootDir/gradle/test.gradle"
-apply from: "$rootDir/gradle/spotless.gradle"
-apply from: "$rootDir/gradle/publish.gradle"
-
 allprojects {
     repositories { mavenCentral() }
-}
-
-dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation project(':domain')
-    implementation project(':application')
-    compileOnly 'com.google.code.findbugs:jsr305:3.0.2'
-    compileOnly "org.immutables:value:${immutablesVersion}:annotations"
-    annotationProcessor "org.immutables:value:${immutablesVersion}"
-    testImplementation "com.google.guava:guava:${guavaVersion}"
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 subprojects {

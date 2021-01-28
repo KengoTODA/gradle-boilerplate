@@ -1,11 +1,9 @@
-package jp.skypencil;
+package jp.skypencil.presentation;
 
 import java.util.UUID;
 import java.util.stream.Stream;
+import jp.skypencil.application.task.TaskApplicationService;
 import jp.skypencil.application.task.TaskData;
-import jp.skypencil.domain.model.TaskId;
-import jp.skypencil.domain.model.TaskRepository;
-import jp.skypencil.domain.service.TaskDomainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,20 +19,17 @@ import org.springframework.web.server.ResponseStatusException;
  */
 @RestController
 public class TaskController {
-  private final TaskDomainService service;
-  private final TaskRepository repository;
+  private final TaskApplicationService service;
 
   @Autowired
-  public TaskController(TaskDomainService service, TaskRepository repository) {
+  public TaskController(TaskApplicationService service) {
     this.service = service;
-    this.repository = repository;
   }
 
   @GetMapping("/task/{id}")
   public TaskData find(@PathVariable("id") UUID id) {
-    return repository
-        .find(new TaskId(id))
-        .map(TaskData::new)
+    return service
+        .find(id)
         .orElseThrow(
             () ->
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "No task found with id: " + id));
@@ -42,12 +37,12 @@ public class TaskController {
 
   @GetMapping("/task")
   public Stream<TaskData> list() {
-    return repository.list().map(TaskData::new);
+    return service.listAll();
   }
 
   @PostMapping("/task")
   public TaskData create(@RequestBody String subject) {
     // TODO make sure subject is given properly
-    return new TaskData(service.create(subject));
+    return service.create(subject);
   }
 }
