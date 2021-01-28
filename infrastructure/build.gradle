@@ -11,6 +11,5 @@ dependencies {
     annotationProcessor "org.immutables:value:${immutablesVersion}"
     compileOnly 'com.google.code.findbugs:jsr305:3.0.2'
     compileOnly 'org.springframework:spring-context'
-    implementation project(':domain')
-    implementation project(':infrastructure')
+    api project(':domain')
 }
