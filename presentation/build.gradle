@@ -7,8 +7,6 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation project(':application')
     compileOnly 'com.google.code.findbugs:jsr305:3.0.2'
-    compileOnly "org.immutables:value:${immutablesVersion}:annotations"
-    annotationProcessor "org.immutables:value:${immutablesVersion}"
     testImplementation "com.google.guava:guava:${guavaVersion}"
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }

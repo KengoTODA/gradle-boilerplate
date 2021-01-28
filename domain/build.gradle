@@ -9,6 +9,7 @@ dependencyManagement {
 
 dependencies {
     annotationProcessor "org.immutables:value:${immutablesVersion}"
+    compileOnly "org.immutables:value:${immutablesVersion}:annotations"
     compileOnly 'com.google.code.findbugs:jsr305:3.0.2'
     compileOnly 'org.springframework:spring-context'
 }

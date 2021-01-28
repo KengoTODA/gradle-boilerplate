@@ -1,5 +1,6 @@
 package jp.skypencil.domain.service;
 
+import jp.skypencil.domain.model.ImmutableTask;
 import jp.skypencil.domain.model.Task;
 import jp.skypencil.domain.model.TaskId;
 import jp.skypencil.domain.model.TaskRepository;
@@ -20,7 +21,7 @@ public class TaskDomainService {
   }
 
   public Task create(String subject) {
-    Task task = new Task(TaskId.create(), subject, false);
+    Task task = ImmutableTask.builder().id(TaskId.create()).subject(subject).isDone(false).build();
     repository.save(task);
     return task;
   }
