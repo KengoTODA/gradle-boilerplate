@@ -8,10 +8,4 @@ dependencies {
 
 test { useJUnitPlatform() }
 
-jacocoTestReport {
-    reports {
-        xml.enabled true
-    }
-}
-
 tasks.check.dependsOn 'jacocoTestReport'

@@ -1,4 +1,5 @@
 plugins {
+    id 'jacoco'
     id 'com.diffplug.spotless' version '5.9.0' apply false
     id 'org.springframework.boot' version '2.4.2' apply false
     id 'io.spring.dependency-management' version '1.0.11.RELEASE' apply false
@@ -28,14 +29,17 @@ subprojects {
 
 task jacocoRootReport(type: JacocoReport) {
     description = 'Merge all coverage reports before submit to SonarQube'
-    def reportTasks = project.getTasksByName("jacocoTestReport", true)
+    List<JacocoReport> reportTasks = project.subprojects.collect {it.tasks.withType(JacocoReport)}.flatten()
     dependsOn reportTasks
 
-    executionData.setFrom reportTasks.executionData
-    sourceDirectories.setFrom reportTasks.sourceDirectories
+    executionData reportTasks.collect({ it.executionData })
+    classDirectories.setFrom reportTasks.collect({it.classDirectories })
+    sourceDirectories.setFrom reportTasks.collect({it.sourceDirectories })
 
     reports {
-        html.enabled = true
+        html.destination file("${buildDir}/reports/jacoco/merged/html")
+        xml.enabled = true
+        xml.destination file("${buildDir}/reports/jacoco/merged/merged.xml")
     }
 }
 
