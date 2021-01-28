@@ -8,8 +8,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * The DomainService handling task related operations that should not be behaviour of the {@link
- * Task} class. It returns not domain object {@link Task} but DTO {@link TaskModel}, to make callers
- * unable to call other methods provided for domain objects.
+ * Task} class.
  */
 @Service
 public class TaskDomainService {

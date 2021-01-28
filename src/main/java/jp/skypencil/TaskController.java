@@ -2,6 +2,7 @@ package jp.skypencil;
 
 import java.util.UUID;
 import java.util.stream.Stream;
+import jp.skypencil.application.task.TaskData;
 import jp.skypencil.domain.model.TaskId;
 import jp.skypencil.domain.model.TaskRepository;
 import jp.skypencil.domain.service.TaskDomainService;
@@ -30,23 +31,23 @@ public class TaskController {
   }
 
   @GetMapping("/task/{id}")
-  public TaskModel find(@PathVariable("id") UUID id) {
+  public TaskData find(@PathVariable("id") UUID id) {
     return repository
         .find(new TaskId(id))
-        .map(TaskModel::new)
+        .map(TaskData::new)
         .orElseThrow(
             () ->
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "No task found with id: " + id));
   }
 
   @GetMapping("/task")
-  public Stream<TaskModel> list() {
-    return repository.list().map(TaskModel::new);
+  public Stream<TaskData> list() {
+    return repository.list().map(TaskData::new);
   }
 
   @PostMapping("/task")
-  public TaskModel create(@RequestBody String subject) {
+  public TaskData create(@RequestBody String subject) {
     // TODO make sure subject is given properly
-    return new TaskModel(service.create(subject));
+    return new TaskData(service.create(subject));
   }
 }
