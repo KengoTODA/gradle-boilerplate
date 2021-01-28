@@ -1,4 +1,4 @@
-package jp.skypencil;
+package jp.skypencil.application.task;
 
 import java.util.UUID;
 import jp.skypencil.domain.model.Task;
@@ -7,14 +7,14 @@ import org.springframework.lang.NonNull;
 /**
  * The immutable DTO representing task to handle.
  *
- * <p>Will be returned from domain objects to caller, generally Controllers.
+ * <p>Will be returned from ApplicationService to caller, generally Controllers.
  */
-final class TaskModel {
+public final class TaskData {
   final UUID id;
   final String subject;
   final boolean done;
 
-  TaskModel(@NonNull Task task) {
+  public TaskData(@NonNull Task task) {
     this.id = task.getId().getUuid();
     this.subject = task.getSubject();
     this.done = task.isDone();
