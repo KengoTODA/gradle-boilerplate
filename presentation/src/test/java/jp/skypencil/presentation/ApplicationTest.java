@@ -1,4 +1,4 @@
-package jp.skypencil;
+package jp.skypencil.presentation;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
