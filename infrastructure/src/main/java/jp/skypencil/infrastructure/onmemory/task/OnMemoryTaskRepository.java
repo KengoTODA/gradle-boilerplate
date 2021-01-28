@@ -16,7 +16,7 @@ public class OnMemoryTaskRepository implements TaskRepository {
 
   @Override
   public void save(Task task) {
-    store.put(task.getId(), task);
+    store.put(task.id(), task);
   }
 
   @Override

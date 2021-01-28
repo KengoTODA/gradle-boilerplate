@@ -14,9 +14,15 @@ public final class TaskData {
   final String subject;
   final boolean done;
 
+  public TaskData(UUID id, String subject, boolean done) {
+    this.id = id;
+    this.subject = subject;
+    this.done = done;
+  }
+
   public TaskData(@NonNull Task task) {
-    this.id = task.getId().getUuid();
-    this.subject = task.getSubject();
+    this.id = task.id().uuid();
+    this.subject = task.subject();
     this.done = task.isDone();
   }
 

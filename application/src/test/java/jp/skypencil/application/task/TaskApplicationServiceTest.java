@@ -11,7 +11,7 @@ class TaskApplicationServiceTest {
   @Test
   void testFind() {
     TaskRepository repository = new OnMemoryTaskRepository();
-    TaskApplicationService service = new TaskApplicationService(repository);
+    DefaultTaskApplicationService service = new DefaultTaskApplicationService(repository);
     UUID id = service.create("subject").getId();
 
     assertTrue(service.find(id).isPresent());
@@ -20,7 +20,7 @@ class TaskApplicationServiceTest {
   @Test
   void testFindRandomId() {
     TaskRepository repository = new OnMemoryTaskRepository();
-    TaskApplicationService service = new TaskApplicationService(repository);
+    DefaultTaskApplicationService service = new DefaultTaskApplicationService(repository);
 
     assertTrue(service.find(UUID.randomUUID()).isEmpty());
   }
