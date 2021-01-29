@@ -1,6 +1,6 @@
 ## Infrastructure Layer
 
-This submodule manages the infrastructure layer.
+This subproject manages the infrastructure layer.
 
 In this layer, we code classes that implement the `Repository` interface in the domain layer.
 

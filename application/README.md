@@ -1,6 +1,6 @@
 ## Application Layer
 
-This submodule manages the application layer.
+This subproject manages the application layer.
 
 In this layer, we code classes that represents use cases of each domain.
 
