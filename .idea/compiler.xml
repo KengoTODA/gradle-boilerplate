@@ -28,9 +28,11 @@
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.j2objc/j2objc-annotations/1.3/ba035118bc8bac37d7eff77700720999acd9986d/j2objc-annotations-1.3.jar" />
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.eclipse.jgit/org.eclipse.jgit/4.4.1.201607150455-r/63998ced66e425d9e8bcd0c59f710c98f0c021ff/org.eclipse.jgit-4.4.1.201607150455-r.jar" />
         </processorPath>
+        <module name="gradle-boilerplate.frontend.test" />
         <module name="gradle-boilerplate.presentation.main" />
         <module name="gradle-boilerplate.infrastructure.main" />
         <module name="gradle-boilerplate.domain.test" />
+        <module name="gradle-boilerplate.frontend.main" />
         <module name="gradle-boilerplate.application.test" />
         <module name="gradle-boilerplate.infrastructure.test" />
         <module name="gradle-boilerplate.presentation.test" />

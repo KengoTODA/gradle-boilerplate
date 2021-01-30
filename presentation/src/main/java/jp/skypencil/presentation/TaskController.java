@@ -18,16 +18,16 @@ import org.springframework.web.server.ResponseStatusException;
  * help domain objects understand requests from user.
  */
 @RestController
-public class TaskController {
+class TaskController {
   private final TaskApplicationService service;
 
   @Autowired
-  public TaskController(TaskApplicationService service) {
+  TaskController(TaskApplicationService service) {
     this.service = service;
   }
 
   @GetMapping("/task/{id}")
-  public TaskData find(@PathVariable("id") UUID id) {
+  TaskData find(@PathVariable("id") UUID id) {
     return service
         .find(id)
         .orElseThrow(
@@ -36,12 +36,12 @@ public class TaskController {
   }
 
   @GetMapping("/task")
-  public Stream<TaskData> list() {
+  Stream<TaskData> list() {
     return service.listAll();
   }
 
   @PostMapping("/task")
-  public TaskData create(@RequestBody String subject) {
+  TaskData create(@RequestBody String subject) {
     // TODO make sure subject is given properly
     return service.create(subject);
   }

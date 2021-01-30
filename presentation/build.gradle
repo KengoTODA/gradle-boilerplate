@@ -8,3 +8,14 @@ dependencies {
     implementation project(':application')
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
+
+def copyFrontendResources = tasks.register('copyFrontendResources', Copy)
+
+copyFrontendResources.configure {
+    from project(':frontend').tasks.named('assembleFrontend')
+    into "$buildDir/resources/main/public"
+}
+
+tasks.named('processResources').configure {
+    dependsOn copyFrontendResources
+}

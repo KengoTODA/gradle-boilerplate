@@ -1,4 +1,5 @@
 include ':domain'
 include ':application'
 include ':infrastructure'
+include ':frontend'
 include ':presentation'

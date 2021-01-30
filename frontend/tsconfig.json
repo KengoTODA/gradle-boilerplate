@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "lib": ["es2017", "DOM"],
+    "target": "es5",
+    "module": "es6",
+    "moduleResolution": "node",
+    "declaration": true,
+    "outDir": "./dist",
+    "noUnusedLocals": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}
