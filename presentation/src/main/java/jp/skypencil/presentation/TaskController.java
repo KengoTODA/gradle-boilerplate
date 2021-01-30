@@ -2,7 +2,7 @@ package jp.skypencil.presentation;
 
 import java.util.UUID;
 import java.util.stream.Stream;
-import jp.skypencil.application.task.DefaultTaskApplicationService;
+import jp.skypencil.application.task.TaskApplicationService;
 import jp.skypencil.application.task.TaskData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,10 +19,10 @@ import org.springframework.web.server.ResponseStatusException;
  */
 @RestController
 public class TaskController {
-  private final DefaultTaskApplicationService service;
+  private final TaskApplicationService service;
 
   @Autowired
-  public TaskController(DefaultTaskApplicationService service) {
+  public TaskController(TaskApplicationService service) {
     this.service = service;
   }
 

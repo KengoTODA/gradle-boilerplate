@@ -8,7 +8,7 @@ import static org.mockito.BDDMockito.given;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Stream;
-import jp.skypencil.application.task.DefaultTaskApplicationService;
+import jp.skypencil.application.task.TaskApplicationService;
 import jp.skypencil.application.task.TaskData;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -18,7 +18,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 @ExtendWith(SpringExtension.class)
 class TaskControllerTest {
-  @MockBean DefaultTaskApplicationService service;
+  @MockBean TaskApplicationService service;
 
   @Test
   void testCreateTask() {

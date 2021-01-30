@@ -5,7 +5,7 @@ import java.util.UUID;
 import java.util.stream.Stream;
 
 public interface TaskApplicationService {
-  TaskData create(String subject);
+  TaskData create(String subject) throws TaskDuplicationException;
 
   Optional<TaskData> find(UUID id);
 
