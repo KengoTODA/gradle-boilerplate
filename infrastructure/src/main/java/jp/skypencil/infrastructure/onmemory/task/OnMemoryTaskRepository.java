@@ -31,4 +31,9 @@ public class OnMemoryTaskRepository implements TaskRepository {
   public Stream<Task> list() {
     return store.values().stream();
   }
+
+  /** Clean tasks for unit tests */
+  public void clear() {
+    store.clear();
+  }
 }

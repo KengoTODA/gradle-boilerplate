@@ -4,6 +4,7 @@ import java.util.UUID;
 import java.util.stream.Stream;
 import jp.skypencil.application.task.TaskApplicationService;
 import jp.skypencil.application.task.TaskData;
+import jp.skypencil.application.task.TaskDuplicationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,6 +44,14 @@ class TaskController {
   @PostMapping("/task")
   TaskData create(@RequestBody String subject) {
     // TODO make sure subject is given properly
-    return service.create(subject);
+
+    try {
+      return service.create(subject);
+    } catch (TaskDuplicationException e) {
+      throw new ResponseStatusException(
+          HttpStatus.BAD_REQUEST,
+          "Provided subject is already used. Try other subject instead.",
+          e);
+    }
   }
 }

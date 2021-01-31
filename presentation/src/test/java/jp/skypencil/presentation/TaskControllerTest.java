@@ -1,54 +1,65 @@
 package jp.skypencil.presentation;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.BDDMockito.given;
+import static org.springframework.test.web.servlet.ResultMatcher.matchAll;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import java.util.Optional;
 import java.util.UUID;
-import java.util.stream.Stream;
-import jp.skypencil.application.task.TaskApplicationService;
-import jp.skypencil.application.task.TaskData;
+import jp.skypencil.infrastructure.onmemory.task.OnMemoryTaskRepository;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.web.server.ResponseStatusException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.web.servlet.MockMvc;
 
-@ExtendWith(SpringExtension.class)
+@SpringBootTest
+@AutoConfigureMockMvc
 class TaskControllerTest {
-  @MockBean TaskApplicationService service;
+  @Autowired private MockMvc mockMvc;
 
-  @Test
-  void testCreateTask() {
-    TaskController controller = new TaskController(service);
-    given(service.create(anyString()))
-        .will(
-            invocation -> {
-              String subject = invocation.getArgument(0);
-              return new TaskData(UUID.randomUUID(), subject, false);
-            });
+  @Autowired private OnMemoryTaskRepository repository;
 
-    TaskData data = controller.create("subject");
-    assertEquals("subject", data.getSubject());
+  @AfterEach
+  void clear() {
+    repository.clear();
   }
 
   @Test
-  void testListTask() {
-    TaskController controller = new TaskController(service);
-    given(service.listAll()).willReturn(Stream.empty());
-
-    assertEquals(0, controller.list().count());
+  void testCreateTask() throws Exception {
+    mockMvc
+        .perform(post("/task/").content("subject"))
+        .andExpect(matchAll(status().isOk(), jsonPath("$.subject").value("subject")));
   }
 
   @Test
-  void testTaskNotFound() {
-    TaskController controller = new TaskController(service);
+  void testCreateDuplicatedTask() throws Exception {
+    mockMvc.perform(post("/task/").content("subject"));
+    mockMvc
+        .perform(post("/task/").content("subject"))
+        .andExpect(
+            matchAll(
+                status().isBadRequest(),
+                status().reason("Provided subject is already used. Try other subject instead.")));
+  }
 
+  @Test
+  void testListTask() throws Exception {
+    mockMvc.perform(post("/task/").content("subject"));
+    mockMvc
+        .perform(get("/task"))
+        .andExpect(matchAll(status().isOk(), content().json("[{\"subject\":\"subject\"}]")));
+  }
+
+  @Test
+  void testTaskNotFound() throws Exception {
     UUID id = UUID.randomUUID();
-    given(service.find(id)).willReturn(Optional.empty());
     String message = String.format("No task found with id: %s", id);
-    assertThrows(ResponseStatusException.class, () -> controller.find(id), message);
+    mockMvc
+        .perform(get("/task/{taskId}", id))
+        .andExpect(matchAll(status().isNotFound(), status().reason(message)));
   }
 }
