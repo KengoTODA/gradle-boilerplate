@@ -1,9 +1,6 @@
 package jp.skypencil.infrastructure.onmemory.task;
 
-import java.util.Collections;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Stream;
 import jp.skypencil.domain.model.Task;
 import jp.skypencil.domain.model.TaskId;
@@ -25,7 +22,18 @@ public class OnMemoryTaskRepository implements TaskRepository {
   }
 
   @Override
+  public boolean exists(String subject) {
+    Objects.requireNonNull(subject);
+    return store.values().stream().anyMatch(task -> task.subject().equals(subject));
+  }
+
+  @Override
   public Stream<Task> list() {
     return store.values().stream();
+  }
+
+  /** Clean tasks for unit tests */
+  public void clear() {
+    store.clear();
   }
 }

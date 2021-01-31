@@ -9,6 +9,7 @@ import jp.skypencil.domain.model.ImmutableTaskId;
 import jp.skypencil.domain.model.Task;
 import jp.skypencil.domain.model.TaskId;
 import jp.skypencil.domain.model.TaskRepository;
+import jp.skypencil.domain.service.TaskDomainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,16 +19,22 @@ import org.springframework.stereotype.Service;
  * callers unable to call other methods provided for domain objects.
  */
 @Service
-public class DefaultTaskApplicationService implements TaskApplicationService {
+class DefaultTaskApplicationService implements TaskApplicationService {
   private final TaskRepository repository;
+  private final TaskDomainService domainService;
 
   @Autowired
-  public DefaultTaskApplicationService(TaskRepository repository) {
+  public DefaultTaskApplicationService(TaskDomainService domainService, TaskRepository repository) {
+    this.domainService = domainService;
     this.repository = repository;
   }
 
   @Override
   public TaskData create(String subject) {
+    if (domainService.duplicates(subject)) {
+      throw new TaskDuplicationException();
+    }
+
     Task task = ImmutableTask.builder().id(TaskId.create()).subject(subject).isDone(false).build();
     repository.save(task);
     return new TaskData(task);

@@ -1,0 +1,23 @@
+apply plugin: 'org.siouan.frontend-jdk11'
+
+frontend {
+    // use the node installed by nvm
+    nodeDistributionProvided = true
+
+    assembleScript = 'run assemble'
+    checkScript = 'run check'
+    cleanScript = 'run clean'
+}
+
+tasks.named('assembleFrontend').configure {
+    inputs.dir 'src'
+    inputs.files '*.json'
+    outputs.dir 'dist'
+}
+
+tasks.named('checkFrontend').configure {
+    inputs.dir 'src'
+    inputs.dir 'test'
+    inputs.files '*.json'
+    inputs.file 'jest.config.js'
+}

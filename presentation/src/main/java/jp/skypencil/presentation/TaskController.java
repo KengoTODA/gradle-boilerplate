@@ -2,8 +2,9 @@ package jp.skypencil.presentation;
 
 import java.util.UUID;
 import java.util.stream.Stream;
-import jp.skypencil.application.task.DefaultTaskApplicationService;
+import jp.skypencil.application.task.TaskApplicationService;
 import jp.skypencil.application.task.TaskData;
+import jp.skypencil.application.task.TaskDuplicationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,11 +19,11 @@ import org.springframework.web.server.ResponseStatusException;
  * help domain objects understand requests from user.
  */
 @RestController
-public class TaskController {
-  private final DefaultTaskApplicationService service;
+class TaskController {
+  private final TaskApplicationService service;
 
   @Autowired
-  public TaskController(DefaultTaskApplicationService service) {
+  TaskController(TaskApplicationService service) {
     this.service = service;
   }
 
@@ -43,6 +44,14 @@ public class TaskController {
   @PostMapping("/task")
   public TaskData create(@RequestBody String subject) {
     // TODO make sure subject is given properly
-    return service.create(subject);
+
+    try {
+      return service.create(subject);
+    } catch (TaskDuplicationException e) {
+      throw new ResponseStatusException(
+          HttpStatus.BAD_REQUEST,
+          "Provided subject is already used. Try other subject instead.",
+          e);
+    }
   }
 }

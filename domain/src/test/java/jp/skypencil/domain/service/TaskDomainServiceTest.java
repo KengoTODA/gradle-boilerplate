@@ -1,6 +1,7 @@
 package jp.skypencil.domain.service;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Optional;
 import java.util.stream.Stream;
@@ -11,7 +12,7 @@ import org.junit.jupiter.api.Test;
 
 class TaskDomainServiceTest {
   @Test
-  void testCreate() {
+  void testDuplicates() {
     TaskRepository repository =
         new TaskRepository() {
           @Override
@@ -23,13 +24,18 @@ class TaskDomainServiceTest {
           }
 
           @Override
+          public boolean exists(String subject) {
+            return "subject".equals(subject);
+          }
+
+          @Override
           public Stream<Task> list() {
             return Stream.empty();
           }
         };
 
-    TaskDomainService service = new TaskDomainService(repository);
-    Task created = service.create("subject");
-    assertEquals("subject", created.subject());
+    DefaultTaskDomainService service = new DefaultTaskDomainService(repository);
+    assertTrue(service.duplicates("subject"));
+    assertFalse(service.duplicates("anotherSubject"));
   }
 }
