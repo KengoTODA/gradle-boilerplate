@@ -28,7 +28,7 @@ class TaskController {
   }
 
   @GetMapping("/task/{id}")
-  TaskData find(@PathVariable("id") UUID id) {
+  public TaskData find(@PathVariable("id") UUID id) {
     return service
         .find(id)
         .orElseThrow(
@@ -37,12 +37,12 @@ class TaskController {
   }
 
   @GetMapping("/task")
-  Stream<TaskData> list() {
+  public Stream<TaskData> list() {
     return service.listAll();
   }
 
   @PostMapping("/task")
-  TaskData create(@RequestBody String subject) {
+  public TaskData create(@RequestBody String subject) {
     // TODO make sure subject is given properly
 
     try {
