@@ -1,5 +1,6 @@
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'org.siouan.frontend-jdk11'
 
 apply from: "$rootDir/gradle/publish.gradle"
 
@@ -13,10 +14,32 @@ dependencies {
 def copyFrontendResources = tasks.register('copyFrontendResources', Copy)
 
 copyFrontendResources.configure {
-    from project(':frontend').tasks.named('assembleFrontend')
+    from tasks.named('assembleFrontend')
     into "$buildDir/resources/main/public"
 }
 
 tasks.named('processResources').configure {
     dependsOn copyFrontendResources
+}
+
+frontend {
+    // use the node installed by nvm
+    nodeDistributionProvided = true
+
+    assembleScript = 'run assemble'
+    checkScript = 'run check'
+    cleanScript = 'run clean'
+}
+
+tasks.named('assembleFrontend').configure {
+    inputs.dir 'src'
+    inputs.files '*.json'
+    outputs.dir 'dist'
+}
+
+tasks.named('checkFrontend').configure {
+    inputs.dir 'src'
+    inputs.dir 'test'
+    inputs.files '*.json'
+    inputs.file 'jest.config.js'
 }
