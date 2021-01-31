@@ -18,9 +18,11 @@ allprojects {
     repositories { mavenCentral() }
 }
 subprojects {
-    apply from: "$rootDir/gradle/java.gradle"
-    apply from: "$rootDir/gradle/test.gradle"
-    apply from: "$rootDir/gradle/spotless.gradle"
+    if (project != project(':frontend')) {
+        apply from: "$rootDir/gradle/java.gradle"
+        apply from: "$rootDir/gradle/test.gradle"
+        apply from: "$rootDir/gradle/spotless.gradle"
+    }
 
     ext {
         mavenBom = org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES
