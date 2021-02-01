@@ -53,7 +53,7 @@
         "@semantic-release/exec",
         {
           "verifyConditionsCmd": "./gradlew jibDockerBuild",
-          "publishCmd": "./gradlew jib -Djib.to.auth.username=$GITHUB_ACTOR -Djib.to.auth.password=$GITHUB_TOKEN"
+          "publishCmd": "./gradlew jib"
         }
       ]
     ]
