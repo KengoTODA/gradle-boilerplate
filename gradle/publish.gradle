@@ -1,4 +1,5 @@
 apply plugin: 'maven-publish'
+apply plugin: 'com.google.cloud.tools.jib'
 
 def getBranch() {
     def process = 'git branch --show-current'.execute()
@@ -29,6 +30,12 @@ publishing {
             groupId 'jp.skypencil'
             from components.java
         }
+    }
+}
+
+jib {
+    to {
+        image = 'docker.pkg.github.com/kengotoda/gradle-boilerplate/gradle-boilerplate:latest'
     }
 }
 
