@@ -12,10 +12,13 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 11
+    - name: Read .nvmrc
+      run: echo "##[set-output name=NVMRC;]$(head -1 .nvmrc)"
+      id: nvm
     - name: Set up NodeJS
       uses: actions/setup-node@v2
       with:
-        node-version: 12
+        node-version: "${{ steps.nvm.outputs.NVMRC }}"
     - uses: actions/checkout@v2
       with:
         fetch-depth: 0
@@ -36,3 +39,5 @@ jobs:
         npm run semantic-release
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        ACR_USERNAME: gradleboilerplate
+        ACR_PASSWORD: ${{ secrets.ACR_PASSWORD }}
