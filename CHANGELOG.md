@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/KengoTODA/gradle-boilerplate/compare/v1.0.0...v1.0.1) (2021-02-01)
+
+
+### Bug Fixes
+
+* Introduce Azure Container Registry and Container Instances ([#352](https://github.com/KengoTODA/gradle-boilerplate/issues/352)) ([9c39719](https://github.com/KengoTODA/gradle-boilerplate/commit/9c39719ece7bf77b8b1dd7de5c2a8ad725a6e848))
+
 # 1.0.0 (2021-01-27)
 
 
