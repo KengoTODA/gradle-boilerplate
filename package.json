@@ -1,6 +1,7 @@
 {
   "devDependencies": {
     "@semantic-release/changelog": "5.0.1",
+    "@semantic-release/exec": "^5.0.0",
     "@semantic-release/git": "9.0.0",
     "commitlint": "11.0.0",
     "conventional-changelog-conventionalcommits": "4.5.0",
@@ -46,6 +47,13 @@
             "gradle.properties",
             "CHANGELOG.md"
           ]
+        }
+      ],
+      [
+        "@semantic-release/exec",
+        {
+          "verifyConditionsCmd": "./gradlew jibDockerBuild",
+          "publishCmd": "./gradlew jib -Djib.to.auth.username=$GITHUB_ACTOR -Djib.to.auth.password=$GITHUB_TOKEN"
         }
       ]
     ]
