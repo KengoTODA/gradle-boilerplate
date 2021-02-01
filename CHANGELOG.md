@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/KengoTODA/gradle-boilerplate/compare/v1.0.1...v1.0.2) (2021-02-01)
+
+
+### Bug Fixes
+
+* the ACR deploy failw due to missing credential ([48f80be](https://github.com/KengoTODA/gradle-boilerplate/commit/48f80be8783107b6734ba9518bcd210bc9c02aa4))
+
 ## [1.0.1](https://github.com/KengoTODA/gradle-boilerplate/compare/v1.0.0...v1.0.1) (2021-02-01)
 
 
