@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/KengoTODA/gradle-boilerplate/compare/v1.0.2...v1.0.3) (2021-02-02)
+
+
+### Bug Fixes
+
+* Introduce React ([#354](https://github.com/KengoTODA/gradle-boilerplate/issues/354)) ([d1477ff](https://github.com/KengoTODA/gradle-boilerplate/commit/d1477ff3d925f6da940a70dfae4369fbb05e47c6))
+
 ## [1.0.2](https://github.com/KengoTODA/gradle-boilerplate/compare/v1.0.1...v1.0.2) (2021-02-01)
 
 
