@@ -23,7 +23,7 @@
     }
   },
   "lint-staged": {
-    "*.{md,json,ts}": [
+    "*.{md,json,ts,tsx}": [
       "prettier --write",
       "git add"
     ],
@@ -54,9 +54,5 @@
   },
   "engines": {
     "node": "^12.12.0"
-  },
-  "dependencies": {
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1"
   }
 }
