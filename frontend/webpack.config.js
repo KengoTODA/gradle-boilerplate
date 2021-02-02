@@ -2,10 +2,11 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.ts',
+  entry: './src/index.tsx',
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Task management app',
+      template: path.join(__dirname, 'src/index.html'),
+      filename: 'index.html'
     }),
   ],
   module: {
