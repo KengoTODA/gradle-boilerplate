@@ -1,5 +1,5 @@
 import {TaskData} from './data'
-import {Form} from './Form'
+import Form from './Form'
 import {ItemList} from './ItemList'
 import {render} from 'react-dom'
 import React from 'react';

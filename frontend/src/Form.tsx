@@ -1,7 +1,20 @@
-import * as React from 'react'
+import React, { Component } from 'react'
+import { Button, TextField } from '@material-ui/core'
+import { createStyles, withStyles, Theme, WithStyles } from '@material-ui/core/styles';
 
-export class Form extends React.Component<{onSubmit: (subject: string) => void},{subject:string}> {
-    constructor(props: {onSubmit: (subject: string) => void}) {
+const useStyles = (theme: Theme) => createStyles({
+  root: {
+    '& .MuiTextField-root': {
+      margin: theme.spacing(1),
+      width: '25ch',
+    },
+  },
+})
+
+interface Props extends WithStyles<typeof useStyles>{ }
+
+class Form extends Component<Props & {onSubmit: (subject: string) => void},{subject:string}> {
+    constructor(props: Props & {onSubmit: (subject: string) => void}) {
         super(props)
         this.state = {subject: ''}
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -20,9 +33,13 @@ export class Form extends React.Component<{onSubmit: (subject: string) => void},
         }));  
     }
     render() {
-        return (<form id="form" action="/task" method="post" onSubmit={this.handleSubmit}>
-            <label>Subject: <input id="subject" type="text" onChange={this.handleChange} value={this.state.subject} autoFocus></input></label>
-            <button type="submit">Submit</button>
+        const { classes } = this.props;
+
+        return (<form className={classes.root} id="form" action="/task" method="post" onSubmit={this.handleSubmit}>
+            <TextField id="subject" label="Subject" type="text" onChange={this.handleChange} value={this.state.subject} autoFocus />
+            <Button type="submit">Submit</Button>
         </form>)
     }
 }
+
+export default withStyles(useStyles)(Form)

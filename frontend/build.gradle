@@ -4,6 +4,7 @@ frontend {
     // use the node installed by nvm
     nodeDistributionProvided = true
 
+    // TODO add `--mode=production` when we deploy the container
     assembleScript = 'run assemble'
     checkScript = 'run check'
     cleanScript = 'run clean'
