@@ -2,7 +2,7 @@ plugins {
     id 'jacoco'
     id 'org.sonarqube' version '3.1.1'
     id 'com.diffplug.spotless' version '5.12.2' apply false
-    id 'org.springframework.boot' version '2.4.4' apply false
+    id 'org.springframework.boot' version '2.4.5' apply false
     id 'io.spring.dependency-management' version '1.0.11.RELEASE' apply false
     id 'net.ltgt.errorprone' version '2.0.1' apply false
     id 'org.siouan.frontend-jdk11' version '5.0.1' apply false
