@@ -35,8 +35,11 @@ publishing {
 
 jib {
     to {
-        image = 'gradleboilerplate.azurecr.io/gradle-boilerplate'
-        credHelper = 'acr-linux'
+        image = 'docker.pkg.github.com/kengotoda/gradle-boilerplate/gradle-boilerplate'
+        auth {
+            username = providers.environmentVariable('GITHUB_ACTOR')
+            password = providers.environmentVariable('GITHUB_TOKEN')
+        }
     }
 }
 
