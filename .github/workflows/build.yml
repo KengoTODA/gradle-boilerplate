@@ -33,13 +33,10 @@ jobs:
       with:
         name: build reports
         path: build/reports
-    - name: Prepare to release
-      run: |
-        curl -L https://aka.ms/acr/installaad/bash | /bin/bash
-        az acr login -n gradleboilerplate -u gradleboilerplate -p ${{ secrets.ACR_PASSWORD }}
     - name: Release
       run: |
         npm ci
         npm run semantic-release
       env:
+        GITHUB_ACTOR: ${{ secrets.GITHUB_ACTOR }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
