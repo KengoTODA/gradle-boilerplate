@@ -34,6 +34,9 @@ publishing {
 }
 
 jib {
+    from {
+        image ='adoptopenjdk:16-jre'
+    }
     to {
         image = 'docker.pkg.github.com/kengotoda/gradle-boilerplate/gradle-boilerplate'
         auth {
