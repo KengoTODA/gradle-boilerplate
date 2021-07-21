@@ -4,7 +4,7 @@ plugins {
     id 'com.diffplug.spotless' version '5.12.5' apply false
     id 'org.springframework.boot' version '2.5.0' apply false
     id 'io.spring.dependency-management' version '1.0.11.RELEASE' apply false
-    id 'net.ltgt.errorprone' version '2.0.1' apply false
+    id 'net.ltgt.errorprone' version '2.0.2' apply false
     id 'org.siouan.frontend-jdk11' version '5.1.0' apply false
     id 'com.google.cloud.tools.jib' version '3.1.2' apply false
 }
