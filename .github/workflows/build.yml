@@ -20,7 +20,7 @@ jobs:
       run: echo "##[set-output name=NVMRC;]$(head -1 .nvmrc)"
       id: nvm
     - name: Set up NodeJS
-      uses: actions/setup-node@v2.1.5
+      uses: actions/setup-node@v2.3.0
       with:
         node-version: "${{ steps.nvm.outputs.NVMRC }}"
         cache: npm
