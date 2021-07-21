@@ -36,17 +36,9 @@ publishing {
 jib {
     from {
         image ='adoptopenjdk:16-jre'
-        auth {
-            username = providers.environmentVariable('DOCKERHUB_USER')
-            password = providers.environmentVariable('DOCKERHUB_PASSWORD')
-        }
     }
     to {
         image = 'docker.pkg.github.com/kengotoda/gradle-boilerplate/gradle-boilerplate'
-        auth {
-            username = providers.environmentVariable('GITHUB_ACTOR')
-            password = providers.environmentVariable('GITHUB_TOKEN')
-        }
     }
 }
 
