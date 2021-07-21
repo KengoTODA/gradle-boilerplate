@@ -17,11 +17,7 @@
   },
   "lint-staged": {
     "*.{md,json,ts,tsx}": [
-      "prettier --write",
-      "git add"
-    ],
-    "*.{gradle,java}": [
-      "git add"
+      "prettier --write"
     ]
   },
   "release": {
