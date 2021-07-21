@@ -41,7 +41,7 @@ tasks.register('jacocoRootReport', JacocoReport).configure {
 
     reports {
         html.destination file("${buildDir}/reports/jacoco/merged/html")
-        xml.enabled = true
+        xml.required = true
         xml.destination file("${buildDir}/reports/jacoco/merged/merged.xml")
     }
 }
