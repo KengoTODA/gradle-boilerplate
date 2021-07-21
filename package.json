@@ -6,19 +6,14 @@
     "commitlint": "12.1.4",
     "conventional-changelog-conventionalcommits": "4.6.0",
     "gradle-semantic-release-plugin": "1.4.19",
-    "husky": "6.0.0",
+    "husky": "^7.0.0",
     "lint-staged": "11.0.0",
     "prettier": "2.3.0",
     "semantic-release": "17.4.3"
   },
   "scripts": {
-    "format": "prettier --write **/*.{md,json}"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "./gradlew spotlessApply && lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
+    "format": "prettier --write **/*.{md,json}",
+    "prepare": "husky install"
   },
   "lint-staged": {
     "*.{md,json,ts,tsx}": [
